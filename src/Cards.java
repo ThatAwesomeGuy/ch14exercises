@@ -37,6 +37,33 @@ public class Cards {
 	}
 	
 
+	   
+	 @Override
+	    public String toString() {
+		 String str = new String();
+		 int index = 0;
+		 for (int suit = 0; suit <= 3; suit++) {
+				
+				for (int rank = 1; rank <= 13; rank++) {
+				cards[index] = new Cards(rank, suit);
+				index++;
+				}
+				
+
+		 
+	        for (int i = 0; i < this.cards.length; i++) {
+	            str+=(this.cards[i]);                      
+	            str+=('\n');
+	        }
+	       
+		 }
+		 return str.toString();
+	      
+	    }
+
+
+	  
+	
  
 	public static void printCard(Cards c){
 		String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
