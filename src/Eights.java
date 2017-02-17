@@ -122,9 +122,13 @@ public class Eights {
         Player player = one;
 
         // keep playing until there's a winner
+     for(int x = 0; x < 100; x++)
+     {
+    	 
+     
         while (!isDone()) {
             displayState();
-            waitForUser();
+          
             takeTurn(player);
             player = nextPlayer(player);
         }
@@ -132,7 +136,14 @@ public class Eights {
         // display the final score
         one.displayScore();
         two.displayScore();
+        
+      
     }
+     
+     one.displayWinsandlosses();
+     two.displayWinsandlosses();
+   }
+
 
     /**
      * Creates the game and runs it.
