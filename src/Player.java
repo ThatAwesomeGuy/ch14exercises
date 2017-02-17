@@ -114,49 +114,6 @@ public class Player {
     public void displayScore() {
         System.out.println(name + " has " + score() + " points");
     }
-public void displayWinsandlosses(){
-    	
-    	System.out.println(name + " has " + wins() + " wins " + "and has " + loses() + " losses.");
-    	
-    }
 
-	private int loses() {
-		int sum = 0;
-        for (int i = 0; i < hand.size(); i++) {
-            Cards card = hand.getCard(i);
-            int rank = card.getRank();
-            if (rank == 8) {
-                sum -= 20;
-            } else if (rank > 10) {
-                sum -= 10;
-            } else {
-                sum -= rank;
-            }
-        }
-        return sum;
-    }
-
-
-	private int  wins() {
-		int sum = 0;
-        for (int i = 0; i < hand.size(); i++) {
-            Cards card = hand.getCard(i);
-            int rank = card.getRank();
-            if (rank == 8) {
-                sum -= 20;
-            } else if (rank > 10) {
-                sum -= 10;
-            } else {
-                sum -= rank;
-            }
-        }
-        return sum;
-    }
-
-    
-  
-
-
-  
 }
 

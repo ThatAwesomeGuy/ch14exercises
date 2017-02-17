@@ -120,10 +120,15 @@ public class Eights {
      */
     public void playGame() {
         Player player = one;
-
+       
+        int winsplayer=0;
+        int winsotherguy=0;  
+        int lossesplayer=0;
+        int lossesotherguy=0;
+          
         // keep playing until there's a winner
-     for(int x = 0; x < 100; x++)
-     {
+   //  for(int x = 0; x < 100; x++)
+   //  {
     	 
      
         while (!isDone()) {
@@ -137,11 +142,40 @@ public class Eights {
         one.displayScore();
         two.displayScore();
         
-      
-    }
-     
-     one.displayWinsandlosses();
-     two.displayWinsandlosses();
+  
+        
+        if(one.score()>two.score())
+        {
+        	winsplayer++;
+        	
+        }
+        
+        if(one.score()<two.score())
+        {
+        	lossesplayer++;
+        	
+        }
+        
+        
+        if(one.score()>two.score())
+        {
+        	lossesotherguy++;
+        	
+        }
+        
+        if(one.score()<two.score())
+        {
+        	winsotherguy++;
+        	
+        }
+        
+        System.out.println("" + one.getName() + " has " + winsplayer + " wins and has " +lossesplayer+ " loss.");
+        
+        System.out.println("" + two.getName() + " has " + winsotherguy + " wins and has " +lossesotherguy+ " loss.");
+        
+        
+  //  }
+  
    }
 
 
