@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 /**
@@ -40,6 +41,29 @@ public class Eights {
         in = new Scanner(System.in);
     }
 
+    public void reset() {
+        Deck deck = new Deck("Deck");
+        deck.shuffle();
+
+        // deal cards to each player
+        int handSize = 5;
+        one = new Player("Allen");
+        deck.deal(one.getHand(), handSize);
+
+        two = new Player("Chris");
+        deck.deal(two.getHand(), handSize);
+
+        // turn one card face up
+        discardPile = new Hand("Discards");
+        deck.deal(discardPile, 1);
+
+        // put the rest of the deck face down
+        drawPile = new Hand("Draw pile");
+        deck.dealAll(drawPile);
+
+        // create the scanner we'll use to wait for the user
+        in = new Scanner(System.in);
+    }
     /**
      * Returns true if either hand is empty.
      */
@@ -109,6 +133,7 @@ public class Eights {
     public void takeTurn(Player player) {
         Cards prev = discardPile.last();
         Cards next = player.play(this, prev);
+        
         discardPile.addCard(next);
 
         System.out.println(player.getName() + " plays " + next);
@@ -120,65 +145,46 @@ public class Eights {
      */
     public void playGame() {
         Player player = one;
-       
-        int winsplayer=0;
-        int winsotherguy=0;  
-        int lossesplayer=0;
-        int lossesotherguy=0;
-          
+
+        
+        int wins1=0;
+        int wins2=0;
         // keep playing until there's a winner
-   //  for(int x = 0; x < 100; x++)
-   //  {
-    	 
-     
+      
+    	for(int x = 0; x < 100; x++)
+    	{
+    		reset();
+    		
         while (!isDone()) {
             displayState();
-          
+           
             takeTurn(player);
             player = nextPlayer(player);
+            one.displayScore();
+            two.displayScore();
         }
 
         // display the final score
-        one.displayScore();
-        two.displayScore();
+      
         
-  
-        
-        if(one.score()>two.score())
+        if( one.score() > two.score())
         {
-        	winsplayer++;
         	
+        	wins1++;
         }
         
-        if(one.score()<two.score())
+        if( one.score() < two.score())
         {
-        	lossesplayer++;
+        	wins2++;
         	
         }
-        
-        
-        if(one.score()>two.score())
-        {
-        	lossesotherguy++;
-        	
-        }
-        
-        if(one.score()<two.score())
-        {
-        	winsotherguy++;
-        	
-        }
-        
-        System.out.println("" + one.getName() + " has " + winsplayer + " wins and has " +lossesplayer+ " loss.");
-        
-        System.out.println("" + two.getName() + " has " + winsotherguy + " wins and has " +lossesotherguy+ " loss.");
-        
-        
-  //  }
-  
-   }
+    
+      System.out.println("Player 1 won " +wins1 + " times");
+      System.out.println("Player 2 won " +wins2 + " times");
+    }
+    }
 
-
+    
     /**
      * Creates the game and runs it.
      */
